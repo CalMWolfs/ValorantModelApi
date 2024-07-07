@@ -22,7 +22,7 @@ kotlin {
 
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
+        create<MavenPublication>("maven") {
             from(components["java"])
         }
     }
