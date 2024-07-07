@@ -15,5 +15,10 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.CalMWolfs:ValorantModelApi:1.0.1")
+    implementation("com.github.CalMWolfs:ValorantModelApi:1.0.2")
 }
+```
+
+## Introduction
+
+The api requests are not threaded, so you will need to set that up yourself.
