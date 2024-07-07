@@ -42,6 +42,10 @@ object ValorantModelApi {
     fun getVersion(force: Boolean = false) = sendRequest<Version>("version", force)
     fun getSprays(force: Boolean = false) = sendRequestList<Spray>("sprays", force)
 
+    fun clearCache() {
+        requestCache.clear()
+    }
+
     @Throws(IOException::class)
     private inline fun <reified T : Any> sendRequest(requestPath: String, force: Boolean): T {
         if (!force && requestCache.containsKey(requestPath)) {
