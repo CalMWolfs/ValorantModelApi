@@ -1,10 +1,11 @@
 plugins {
     java
     kotlin("jvm") version "1.9.23"
+    `maven-publish`
 }
 
 group = "com.calmwolfs.valorantmodelapi"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -17,4 +18,12 @@ dependencies {
 
 kotlin {
     jvmToolchain(17)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
 }

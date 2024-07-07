@@ -15,5 +15,5 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.CalMWolfs:ValorantModelApi:1.0.0")
+    implementation("com.github.CalMWolfs:ValorantModelApi:1.0.1")
 }
