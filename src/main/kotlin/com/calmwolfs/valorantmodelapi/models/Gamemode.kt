@@ -10,12 +10,12 @@ data class Gamemode(
     val teamRoles: List<String>?,
     val gameFeatureOverrides: List<OverriddenGameFeature>?,
     val displayIcon: String,
-    val assetPath: String
+    val assetPath: String,
 )
 
 data class OverriddenGameFeature(
     val featureName: String,
-    val state: Boolean
+    val state: Boolean,
 )
 
 data class GamemodeEquippable(
@@ -24,5 +24,5 @@ data class GamemodeEquippable(
     val category: String,
     val displayIcon: String,
     val killStreamIcon: String,
-    val assetPath: String
+    val assetPath: String,
 )

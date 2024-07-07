@@ -8,7 +8,7 @@ data class Season(
     val startTime: Date,
     val endTime: Date,
     val borders: List<SeasonBorder>,
-    val assetPath: String
+    val assetPath: String,
 )
 
 data class SeasonBorder(
@@ -17,5 +17,5 @@ data class SeasonBorder(
     val level: Int,
     val displayIcon: String,
     val smallIcon: String,
-    val assetPath: String
+    val assetPath: String,
 )

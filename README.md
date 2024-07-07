@@ -2,14 +2,13 @@
 
 Kotlin API Wrapper for https://valorant-api.com
 
-
 It is free to use and open source.
 
 ## Installation
 
 Add this to your dependencies in your build.gradle.kts file:
 
-```gradle
+```kts
 repositories {
     maven(url = "https://jitpack.io")
 }

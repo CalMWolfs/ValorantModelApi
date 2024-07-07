@@ -8,5 +8,5 @@ data class Card(
     val smallArt: String,
     val wideArt: String,
     val largeArt: String,
-    val assetPath: String
+    val assetPath: String,
 )

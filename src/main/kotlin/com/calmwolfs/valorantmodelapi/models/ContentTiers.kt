@@ -5,5 +5,5 @@ data class ContentTier(
     val devName: String,
     val highlightColor: String,
     val displayIcon: String,
-    val assetPath: String
+    val assetPath: String,
 )

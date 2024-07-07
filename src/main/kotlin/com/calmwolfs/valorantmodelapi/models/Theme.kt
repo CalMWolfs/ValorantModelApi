@@ -5,5 +5,5 @@ data class Theme(
     val displayName: String,
     val displayIcon: String,
     val storeFeaturedImage: String,
-    val assetPath: String
+    val assetPath: String,
 )

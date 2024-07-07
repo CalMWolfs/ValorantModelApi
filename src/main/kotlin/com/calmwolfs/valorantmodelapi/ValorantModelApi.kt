@@ -20,7 +20,7 @@ import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 
-class ValorantModelApi{
+class ValorantModelApi {
 
     private val projectVersion = System.getProperty("project.version")
     private val baseUrl = "https://valorant-api.com/v1"
@@ -39,7 +39,6 @@ class ValorantModelApi{
     fun getWeapons() = sendRequestList<Weapon>("weapons")
     fun getVersion() = sendRequest<Version>("version")
     fun getSprays() = sendRequestList<Spray>("sprays")
-
 
     @Throws(IOException::class)
     private inline fun <reified T> sendRequest(requestPath: String): T {

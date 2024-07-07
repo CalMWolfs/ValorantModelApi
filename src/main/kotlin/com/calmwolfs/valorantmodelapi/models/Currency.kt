@@ -6,5 +6,5 @@ data class Currency(
     val displayNameSingular: String,
     val displayIcon: String,
     val largeIcon: String?,
-    val assetPath: String
+    val assetPath: String,
 )

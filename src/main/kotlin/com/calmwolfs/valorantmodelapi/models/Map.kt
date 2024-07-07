@@ -11,5 +11,5 @@ data class ValorantMap(
     val xMultiplier: Double,
     val yMultiplier: Double,
     val xScalarToAdd: Double,
-    val yScalarToAdd: Double
+    val yScalarToAdd: Double,
 )

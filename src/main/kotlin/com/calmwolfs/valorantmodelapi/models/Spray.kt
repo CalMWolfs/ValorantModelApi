@@ -7,5 +7,5 @@ data class Spray(
     val displayIcon: String,
     val fullIcon: String,
     val fullTransparentIcon: String,
-    val assetPath: String
+    val assetPath: String,
 )

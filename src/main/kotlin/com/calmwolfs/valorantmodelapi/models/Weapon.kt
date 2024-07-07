@@ -9,7 +9,7 @@ data class Weapon(
     val assetPath: String,
     val weaponStats: WeaponStats,
     val shopData: WeaponShopData,
-    val skins: List<WeaponSkin>
+    val skins: List<WeaponSkin>,
 )
 
 data class WeaponStats(
@@ -27,17 +27,17 @@ data class WeaponStats(
     val adsStats: WeaponAdsStats,
     val altShotgunStats: WeaponsShotgunStats,
     val airBurstStats: WeaponsBurstStats?,
-    val damageRanges: List<WeaponDamageRange>
+    val damageRanges: List<WeaponDamageRange>,
 )
 
 data class WeaponsShotgunStats(
     val shotgunPelletCount: Int,
-    val burstRate: Float
+    val burstRate: Float,
 )
 
 data class WeaponsBurstStats(
     val shotgunPelletCount: Int,
-    val burstsDistance: Float
+    val burstsDistance: Float,
 )
 
 data class WeaponShopData(
@@ -48,7 +48,7 @@ data class WeaponShopData(
     val image: String,
     val newImage: String,
     val newImage2: String,
-    val assetPath: String
+    val assetPath: String,
 )
 
 data class WeaponDamageRange(
@@ -56,7 +56,7 @@ data class WeaponDamageRange(
     val rangeEndMeters: Float,
     val headDamage: Float,
     val bodyDamage: Float,
-    val legDamage: Float
+    val legDamage: Float,
 )
 
 data class WeaponAdsStats(
@@ -64,12 +64,12 @@ data class WeaponAdsStats(
     val fireRate: Float,
     val runSpeedMultiplier: Float,
     val burstCount: Int,
-    val firstBulletAccuracy: Float
+    val firstBulletAccuracy: Float,
 )
 
 data class WeaponShopDataGridPosition(
     val row: Int,
-    val column: Int
+    val column: Int,
 )
 
 data class WeaponSkin(
@@ -80,7 +80,7 @@ data class WeaponSkin(
     val displayIcon: String,
     val assetPath: String,
     val chromas: List<WeaponSkinChroma>,
-    val levels: List<WeaponSkinLevel>
+    val levels: List<WeaponSkinLevel>,
 )
 
 data class WeaponSkinChroma(
@@ -89,7 +89,7 @@ data class WeaponSkinChroma(
     val displayIcon: String,
     val fullRender: String,
     val swatch: Any,
-    val assetPath: String
+    val assetPath: String,
 )
 
 data class WeaponSkinLevel(
@@ -97,5 +97,5 @@ data class WeaponSkinLevel(
     val displayName: String,
     val levelItem: Any,
     val displayIcon: String,
-    val assetPath: String
+    val assetPath: String,
 )

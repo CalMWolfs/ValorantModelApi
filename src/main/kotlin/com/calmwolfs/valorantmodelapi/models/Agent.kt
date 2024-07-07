@@ -14,15 +14,14 @@ data class Agent(
     val isPlayableCharacter: Boolean,
     val isAvailableForTest: Boolean,
     val role: AgentRole?,
-    val abilities: List<AgentAbility>
-
+    val abilities: List<AgentAbility>,
 )
 
 data class AgentAbility(
     val slot: String,
     val displayName: String?,
     val description: String?,
-    val displayIcon: String?
+    val displayIcon: String?,
 )
 
 data class AgentRole(
@@ -30,5 +29,5 @@ data class AgentRole(
     val displayName: String,
     val description: String,
     val displayIcon: String,
-    val assetPath: String
+    val assetPath: String,
 )
