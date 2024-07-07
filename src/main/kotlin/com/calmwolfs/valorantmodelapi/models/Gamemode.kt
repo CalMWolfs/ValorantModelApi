@@ -1,24 +1,24 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-class Gamemode(
+data class Gamemode(
     val uuid: String,
     val displayName: String,
     val duration: String,
     val isTeamVoiceAllowed: Boolean,
     val isMinimapHidden: Boolean,
     val orbCount: Int,
-    val teamRoles: Array<String>?,
-    val gameFeatureOverrides: Array<OverriddenGameFeature>?,
+    val teamRoles: List<String>?,
+    val gameFeatureOverrides: List<OverriddenGameFeature>?,
     val displayIcon: String,
     val assetPath: String
 )
 
-class OverriddenGameFeature(
+data class OverriddenGameFeature(
     val featureName: String,
     val state: Boolean
 )
 
-class GamemodeEquippable(
+data class GamemodeEquippable(
     val uuid: String,
     val displayName: String,
     val category: String,

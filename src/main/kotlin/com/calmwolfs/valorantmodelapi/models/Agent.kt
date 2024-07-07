@@ -1,11 +1,11 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-class Agent(
+data class Agent(
     val uuid: String,
     val displayName: String,
     val description: String,
     val developerName: String,
-    val characterTags: Array<String>?,
+    val characterTags: List<String>?,
     val displayIcon: String,
     val bustPortrait: String,
     val fullPortrait: String,
@@ -14,18 +14,18 @@ class Agent(
     val isPlayableCharacter: Boolean,
     val isAvailableForTest: Boolean,
     val role: AgentRole?,
-    val abilities: Array<AgentAbility>
+    val abilities: List<AgentAbility>
 
 )
 
-class AgentAbility(
+data class AgentAbility(
     val slot: String,
     val displayName: String?,
     val description: String?,
     val displayIcon: String?
 )
 
-class AgentRole(
+data class AgentRole(
     val uuid: String,
     val displayName: String,
     val description: String,

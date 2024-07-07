@@ -1,6 +1,6 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-import java.util.*
+import java.util.Date
 
 data class Version(
     val branch: String,

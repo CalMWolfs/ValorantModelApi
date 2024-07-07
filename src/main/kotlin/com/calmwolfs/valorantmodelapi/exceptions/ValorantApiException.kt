@@ -1,6 +1,4 @@
-package com.thoo.api.exceptions
-
-import java.lang.Exception
+package com.calmwolfs.valorantmodelapi.exceptions
 
 class ValorantApiException(
     status: Int?,

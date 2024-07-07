@@ -1,6 +1,6 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-class ContentTier(
+data class ContentTier(
     val uuid: String,
     val devName: String,
     val highlightColor: String,

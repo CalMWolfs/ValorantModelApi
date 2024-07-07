@@ -1,6 +1,6 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-class ValorantMap(
+data class ValorantMap(
     val uuid: String,
     val displayName: String,
     val coordinates: String,

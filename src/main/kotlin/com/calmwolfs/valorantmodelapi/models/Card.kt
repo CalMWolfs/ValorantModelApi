@@ -1,6 +1,6 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-class Card(
+data class Card(
     val uuid: String,
     val displayName: String,
     val isHiddenIfNotOwner: Boolean,

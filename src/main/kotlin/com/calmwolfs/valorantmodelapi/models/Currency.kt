@@ -1,6 +1,6 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-class Currency(
+data class Currency(
     val uuid: String,
     val displayName: String,
     val displayNameSingular: String,

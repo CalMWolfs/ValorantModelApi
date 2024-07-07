@@ -1,6 +1,6 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-class Budy(
+data class Buddy(
      val uuid: String,
      val displayName: String,
      val themeUuid: String?,

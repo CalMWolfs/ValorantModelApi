@@ -1,6 +1,6 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-class Title(
+data class Title(
     val uuid: String,
     val displayName: String,
     val isbHiddenIfNotOwner: Boolean,

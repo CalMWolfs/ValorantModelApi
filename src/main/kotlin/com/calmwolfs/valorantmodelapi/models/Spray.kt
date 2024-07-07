@@ -1,6 +1,6 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-class Spray(
+data class Spray(
     val uuid: String,
     val displayName: String,
     val category: String,

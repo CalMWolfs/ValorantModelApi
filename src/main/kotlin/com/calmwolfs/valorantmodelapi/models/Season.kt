@@ -1,17 +1,17 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-import java.util.*
+import java.util.Date
 
-class Season(
+data class Season(
     val uuid: String,
     val displayName: String,
     val startTime: Date,
     val endTime: Date,
-    val borders: Array<SeasonBorder>,
+    val borders: List<SeasonBorder>,
     val assetPath: String
 )
 
-class SeasonBorder(
+data class SeasonBorder(
     val uuid: String,
     val winsRequired: Int,
     val level: Int,

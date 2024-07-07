@@ -1,7 +1,7 @@
-import com.thoo.api.ValorantApi
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
 
 fun main(args: Array<String>) {
-    val api = ValorantApi()
-    val o = api.getSprays()
-    println()
+    val api = ValorantModelApi()
+    val agents = api.getAgents()
+    println(agents)
 }

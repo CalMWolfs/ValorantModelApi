@@ -1,6 +1,6 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-class Theme(
+data class Theme(
     val uuid: String,
     val displayName: String,
     val displayIcon: String,

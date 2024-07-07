@@ -1,6 +1,6 @@
-package com.thoo.api.models
+package com.calmwolfs.valorantmodelapi.models
 
-class Weapon(
+data class Weapon(
     val uuid: String,
     val displayName: String,
     val category: String,
@@ -9,10 +9,10 @@ class Weapon(
     val assetPath: String,
     val weaponStats: WeaponStats,
     val shopData: WeaponShopData,
-    val skins: Array<WeaponSkin>
+    val skins: List<WeaponSkin>
 )
 
-class WeaponStats(
+data class WeaponStats(
     val fireRate: Float,
     val magazineSize: Int,
     val runSpeedMultiplier: Float,
@@ -27,20 +27,20 @@ class WeaponStats(
     val adsStats: WeaponAdsStats,
     val altShotgunStats: WeaponsShotgunStats,
     val airBurstStats: WeaponsBurstStats?,
-    val damageRanges: Array<WeaponDamageRange>
+    val damageRanges: List<WeaponDamageRange>
 )
 
-class WeaponsShotgunStats(
+data class WeaponsShotgunStats(
     val shotgunPelletCount: Int,
     val burstRate: Float
 )
 
-class WeaponsBurstStats(
+data class WeaponsBurstStats(
     val shotgunPelletCount: Int,
     val burstsDistance: Float
 )
 
-class WeaponShopData(
+data class WeaponShopData(
     val cost: Int,
     val category: String,
     val categoryText: String,
@@ -51,7 +51,7 @@ class WeaponShopData(
     val assetPath: String
 )
 
-class WeaponDamageRange(
+data class WeaponDamageRange(
     val rangeStartsMeters: Float,
     val rangeEndMeters: Float,
     val headDamage: Float,
@@ -59,7 +59,7 @@ class WeaponDamageRange(
     val legDamage: Float
 )
 
-class WeaponAdsStats(
+data class WeaponAdsStats(
     val zoomMultiplier: Float,
     val fireRate: Float,
     val runSpeedMultiplier: Float,
@@ -67,23 +67,23 @@ class WeaponAdsStats(
     val firstBulletAccuracy: Float
 )
 
-class WeaponShopDataGridPosition(
+data class WeaponShopDataGridPosition(
     val row: Int,
     val column: Int
 )
 
-class WeaponSkin(
+data class WeaponSkin(
     val uuid: String,
     val displayName: String,
     val themeUuid: String,
     val contentTierUuid: String,
     val displayIcon: String,
     val assetPath: String,
-    val chromas: Array<WeaponSkinChroma>,
-    val levels: Array<WeaponSkinLevel>
+    val chromas: List<WeaponSkinChroma>,
+    val levels: List<WeaponSkinLevel>
 )
 
-class WeaponSkinChroma(
+data class WeaponSkinChroma(
     val uuid: String,
     val displayName: String,
     val displayIcon: String,
@@ -92,7 +92,7 @@ class WeaponSkinChroma(
     val assetPath: String
 )
 
-class WeaponSkinLevel(
+data class WeaponSkinLevel(
     val uuid: String,
     val displayName: String,
     val levelItem: Any,
