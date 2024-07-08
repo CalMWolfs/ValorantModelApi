@@ -1,12 +1,12 @@
 package com.calmwolfs.valorantmodelapi.models
 
-data class CompetitiveTiers(
+data class CompetitiveTier(
     val uuid: String,
     val assetObjectName: String,
-    val tiers: List<CompetitiveTier>
+    val tiers: List<CompetitiveRank>
 )
 
-data class CompetitiveTier(
+data class CompetitiveRank(
     val tier: Int,
     val tierName: String,
     val division: String,

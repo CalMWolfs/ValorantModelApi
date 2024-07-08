@@ -3,7 +3,7 @@ package com.calmwolfs.valorantmodelapi
 import com.calmwolfs.valorantmodelapi.models.Agent
 import com.calmwolfs.valorantmodelapi.models.Buddy
 import com.calmwolfs.valorantmodelapi.models.Ceremony
-import com.calmwolfs.valorantmodelapi.models.CompetitiveTiers
+import com.calmwolfs.valorantmodelapi.models.CompetitiveTier
 import com.calmwolfs.valorantmodelapi.models.StoreBundle
 import com.calmwolfs.valorantmodelapi.models.PlayerCard
 import com.calmwolfs.valorantmodelapi.models.ContentTier
@@ -33,12 +33,11 @@ object ValorantModelApi {
 
     // todo allow requesting a single value instead of all, could also introduce coroutines to get all very quickly
 
-
     fun getAgents(force: Boolean = false) = sendRequestList<Agent>("agents?isPlayableCharacter=true", force)
     fun getBuddies(force: Boolean = false) = sendRequestList<Buddy>("buddies", force)
-    fun getBundles(force: Boolean = false) = sendRequestList<StoreBundle>("bundles", force)
+    fun getStoreBundles(force: Boolean = false) = sendRequestList<StoreBundle>("bundles", force)
     fun getCeremonies(force: Boolean = false) = sendRequestList<Ceremony>("ceremonies", force)
-    fun getCompetitiveTiers(force: Boolean = false) = sendRequestList<CompetitiveTiers>("competitivetiers", force)
+    fun getCompetitiveRanks(force: Boolean = false) = sendRequestList<CompetitiveTier>("competitivetiers", force).last().tiers
     // want the latest one to get all ranks
     fun getContentTiers(force: Boolean = false) = sendRequestList<ContentTier>("contenttiers", force)
     // todo add contracts
