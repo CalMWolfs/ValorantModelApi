@@ -2,15 +2,19 @@ package com.calmwolfs.valorantmodelapi
 
 import com.calmwolfs.valorantmodelapi.models.Agent
 import com.calmwolfs.valorantmodelapi.models.Buddy
-import com.calmwolfs.valorantmodelapi.models.Card
+import com.calmwolfs.valorantmodelapi.models.Ceremony
+import com.calmwolfs.valorantmodelapi.models.CompetitiveTiers
+import com.calmwolfs.valorantmodelapi.models.StoreBundle
+import com.calmwolfs.valorantmodelapi.models.PlayerCard
 import com.calmwolfs.valorantmodelapi.models.ContentTier
 import com.calmwolfs.valorantmodelapi.models.Currency
 import com.calmwolfs.valorantmodelapi.models.Gamemode
 import com.calmwolfs.valorantmodelapi.models.GamemodeEquippable
+import com.calmwolfs.valorantmodelapi.models.Gear
 import com.calmwolfs.valorantmodelapi.models.Season
 import com.calmwolfs.valorantmodelapi.models.Spray
 import com.calmwolfs.valorantmodelapi.models.Theme
-import com.calmwolfs.valorantmodelapi.models.Title
+import com.calmwolfs.valorantmodelapi.models.PlayerTitle
 import com.calmwolfs.valorantmodelapi.models.ValorantMap
 import com.calmwolfs.valorantmodelapi.models.Version
 import com.calmwolfs.valorantmodelapi.models.Weapon
@@ -27,20 +31,31 @@ object ValorantModelApi {
 
     private val requestCache = mutableMapOf<String, Any>()
 
-    fun getAgents(force: Boolean = false) = sendRequestList<Agent>("agents", force)
+    // todo allow requesting a single value instead of all, could also introduce coroutines to get all very quickly
+
+
+    fun getAgents(force: Boolean = false) = sendRequestList<Agent>("agents?isPlayableCharacter=true", force)
     fun getBuddies(force: Boolean = false) = sendRequestList<Buddy>("buddies", force)
-    fun getCards(force: Boolean = false) = sendRequestList<Card>("playercards", force)
+    fun getBundles(force: Boolean = false) = sendRequestList<StoreBundle>("bundles", force)
+    fun getCeremonies(force: Boolean = false) = sendRequestList<Ceremony>("ceremonies", force)
+    fun getCompetitiveTiers(force: Boolean = false) = sendRequestList<CompetitiveTiers>("competitivetiers", force)
+    // want the latest one to get all ranks
     fun getContentTiers(force: Boolean = false) = sendRequestList<ContentTier>("contenttiers", force)
+    // todo add contracts
     fun getCurrencies(force: Boolean = false) = sendRequestList<Currency>("currencies", force)
-    fun getGamemodes(force: Boolean = false) = sendRequestList<Gamemode>("gamemodes", force)
+    // todo add events
     fun getGamemodeEquippable(force: Boolean = false) = sendRequestList<GamemodeEquippable>("gamemodes/equippables", force)
+    fun getGamemodes(force: Boolean = false) = sendRequestList<Gamemode>("gamemodes", force)
+    fun getGear(force: Boolean = false) = sendRequestList<Gear>("gear", force)
+    // todo add level borders
     fun getMaps(force: Boolean = false) = sendRequestList<ValorantMap>("maps", force)
+    fun getPlayerCards(force: Boolean = false) = sendRequestList<PlayerCard>("playercards", force)
+    fun getPlayerTitles(force: Boolean = false) = sendRequestList<PlayerTitle>("playertitles", force)
     fun getSeasons(force: Boolean = false) = sendRequestList<Season>("seasons", force)
-    fun getThemes(force: Boolean = false) = sendRequestList<Theme>("themes", force)
-    fun getTitles(force: Boolean = false) = sendRequestList<Title>("playertitles", force)
-    fun getWeapons(force: Boolean = false) = sendRequestList<Weapon>("weapons", force)
-    fun getVersion(force: Boolean = false) = sendRequest<Version>("version", force)
     fun getSprays(force: Boolean = false) = sendRequestList<Spray>("sprays", force)
+    fun getThemes(force: Boolean = false) = sendRequestList<Theme>("themes", force)
+    fun getVersion(force: Boolean = false) = sendRequest<Version>("version", force)
+    fun getWeapons(force: Boolean = false) = sendRequestList<Weapon>("weapons", force)
 
     fun clearCache() {
         requestCache.clear()
@@ -59,7 +74,7 @@ object ValorantModelApi {
 
     @Throws(IOException::class)
     @Suppress("UNCHECKED_CAST")
-    private inline fun <reified T : Any> sendRequestList(requestPath: String, force: Boolean, ): List<T> {
+    private inline fun <reified T : Any> sendRequestList(requestPath: String, force: Boolean): List<T> {
         if (!force && requestCache.containsKey(requestPath)) {
             return requestCache[requestPath] as List<T>
         }

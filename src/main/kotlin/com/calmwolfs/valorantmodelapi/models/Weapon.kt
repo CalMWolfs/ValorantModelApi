@@ -5,10 +5,11 @@ data class Weapon(
     val displayName: String,
     val category: String,
     val defaultSkinUuid: String,
+    val displayIcon: String,
     val killStreamIcon: String,
     val assetPath: String,
     val weaponStats: WeaponStats,
-    val shopData: WeaponShopData,
+    val shopData: ShopData,
     val skins: List<WeaponSkin>,
 )
 
@@ -22,10 +23,10 @@ data class WeaponStats(
     val shotgunPelletCount: Int,
     val wallPenetration: String,
     val feature: String,
-    val fireMode: String,
+    val fireMode: String?,
     val altFireType: String,
     val adsStats: WeaponAdsStats,
-    val altShotgunStats: WeaponsShotgunStats,
+    val altShotgunStats: WeaponsShotgunStats?,
     val airBurstStats: WeaponsBurstStats?,
     val damageRanges: List<WeaponDamageRange>,
 )
@@ -38,17 +39,6 @@ data class WeaponsShotgunStats(
 data class WeaponsBurstStats(
     val shotgunPelletCount: Int,
     val burstsDistance: Float,
-)
-
-data class WeaponShopData(
-    val cost: Int,
-    val category: String,
-    val categoryText: String,
-    val gridPosition: WeaponShopDataGridPosition,
-    val image: String,
-    val newImage: String,
-    val newImage2: String,
-    val assetPath: String,
 )
 
 data class WeaponDamageRange(
@@ -78,6 +68,7 @@ data class WeaponSkin(
     val themeUuid: String,
     val contentTierUuid: String,
     val displayIcon: String,
+    val wallpaper: String?,
     val assetPath: String,
     val chromas: List<WeaponSkinChroma>,
     val levels: List<WeaponSkinLevel>,
@@ -89,13 +80,15 @@ data class WeaponSkinChroma(
     val displayIcon: String,
     val fullRender: String,
     val swatch: Any,
+    val streamedVideo: String?,
     val assetPath: String,
 )
 
 data class WeaponSkinLevel(
     val uuid: String,
     val displayName: String,
-    val levelItem: Any,
+    val levelItem: Any?,
     val displayIcon: String,
+    val streamedVideo: String?,
     val assetPath: String,
 )

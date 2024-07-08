@@ -1,9 +1,10 @@
 package com.calmwolfs.valorantmodelapi.models
 
-data class Theme(
+data class Gear(
     val uuid: String,
     val displayName: String,
-    val displayIcon: String?,
-    val storeFeaturedImage: String?,
+    val description: String,
+    val displayIcon: String,
     val assetPath: String,
+    val shopData: ShopData,
 )
