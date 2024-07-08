@@ -22,7 +22,10 @@ enum class CeremonyType(val displayName: String, val uuid: String) {
 
     companion object {
         fun fromId(id: String?): CeremonyType {
-            return entries.find { it.uuid == id } ?: UNKNOWN
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, CeremonyType)
+                UNKNOWN
+            }
         }
 
         fun fromName(name: String): CeremonyType {

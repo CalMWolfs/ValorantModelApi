@@ -175,8 +175,11 @@ enum class StoreBundleType(val displayName: String, val uuid: String) {
         get() = ValorantModelApi.getStoreBundle(this)
 
     companion object {
-        fun fromId(uuid: String?): StoreBundleType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): StoreBundleType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, StoreBundleType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): StoreBundleType {

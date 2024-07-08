@@ -19,8 +19,11 @@ enum class CurrencyType(val displayName: String, val uuid: String) {
         get() = ValorantModelApi.getCurrency(this)
 
     companion object {
-        fun fromId(uuid: String?): CurrencyType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): CurrencyType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, CurrencyType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): CurrencyType {

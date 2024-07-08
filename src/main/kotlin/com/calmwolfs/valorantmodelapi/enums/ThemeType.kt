@@ -282,8 +282,11 @@ enum class ThemeType(val displayName: String, val uuid: String) {
         get() = ValorantModelApi.getTheme(this)
 
     companion object {
-        fun fromId(uuid: String?): ThemeType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): ThemeType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, ThemeType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): ThemeType {

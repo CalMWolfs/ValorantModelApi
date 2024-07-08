@@ -20,8 +20,11 @@ enum class ContentTierType(val displayName: String, val uuid: String) {
         get() = ValorantModelApi.getContentTier(this)
 
     companion object {
-        fun fromId(uuid: String?): ContentTierType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): ContentTierType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, ContentTierType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): ContentTierType {

@@ -238,8 +238,11 @@ enum class PlayerTitleType(val displayName: String, val uuid: String) {
         get() = ValorantModelApi.getPlayerTitle(this)
 
     companion object {
-        fun fromId(uuid: String?): PlayerTitleType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): PlayerTitleType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, PlayerTitleType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): PlayerTitleType {

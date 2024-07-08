@@ -39,8 +39,11 @@ enum class AgentType(val displayName: String, val uuid: String) {
         get() = ValorantModelApi.getAgent(this)
 
     companion object {
-        fun fromId(uuid: String?): AgentType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): AgentType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, AgentType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): AgentType {

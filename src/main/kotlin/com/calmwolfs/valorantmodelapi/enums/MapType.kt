@@ -31,8 +31,11 @@ enum class MapType(val displayName: String, val uuid: String) {
         get() = ValorantModelApi.getMap(this)
 
     companion object {
-        fun fromId(uuid: String?): MapType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): MapType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, MapType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): MapType {

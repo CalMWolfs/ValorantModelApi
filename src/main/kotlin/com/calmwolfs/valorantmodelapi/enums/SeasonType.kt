@@ -43,8 +43,11 @@ enum class SeasonType(val displayName: String, val uuid: String) {
         get() = ValorantModelApi.getSeason(this)
 
     companion object {
-        fun fromId(uuid: String?): SeasonType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): SeasonType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, SeasonType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): SeasonType {

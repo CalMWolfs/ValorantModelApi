@@ -44,7 +44,10 @@ enum class CompetitiveRankType(val displayName: String, val tier: Int) {
 
     companion object {
         fun fromTier(tier: Int?): CompetitiveRankType {
-            return entries.find { it.tier == tier } ?: UNKNOWN
+            return entries.find { it.tier == tier } ?: run {
+                ValorantModelApi.logUnknownId(tier.toString(), CompetitiveRankType)
+                UNKNOWN
+            }
         }
 
         fun fromName(name: String): CompetitiveRankType {

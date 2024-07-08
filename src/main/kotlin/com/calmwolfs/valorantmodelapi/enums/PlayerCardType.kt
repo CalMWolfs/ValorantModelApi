@@ -597,8 +597,11 @@ enum class PlayerCardType(val displayName: String, val uuid: String) {
 
 
     companion object {
-        fun fromId(uuid: String?): PlayerCardType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): PlayerCardType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, PlayerCardType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): PlayerCardType {

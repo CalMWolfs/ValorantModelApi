@@ -17,8 +17,11 @@ enum class GamemodeEquippableType(val displayName: String, val uuid: String) {
         get() = ValorantModelApi.getGamemodeEquippable(this)
 
     companion object {
-        fun fromId(uuid: String?): GamemodeEquippableType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): GamemodeEquippableType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, GamemodeEquippableType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): GamemodeEquippableType {

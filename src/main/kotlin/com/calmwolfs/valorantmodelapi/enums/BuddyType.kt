@@ -560,7 +560,10 @@ enum class BuddyType(val displayName: String, val uuid: String) {
 
     companion object {
         fun fromId(id: String?): BuddyType {
-            return entries.find { it.uuid == id } ?: UNKNOWN
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, BuddyType)
+                UNKNOWN
+            }
         }
 
         fun fromName(name: String): BuddyType {

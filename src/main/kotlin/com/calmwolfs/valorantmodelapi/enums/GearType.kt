@@ -17,8 +17,11 @@ enum class GearType(val displayName: String, val uuid: String) {
         get() = ValorantModelApi.getGear(this)
 
     companion object {
-        fun fromId(uuid: String?): GearType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): GearType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, GearType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): GearType {

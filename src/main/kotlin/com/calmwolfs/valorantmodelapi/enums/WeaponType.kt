@@ -34,8 +34,11 @@ enum class WeaponType(val displayName: String, val uuid: String) {
         get() = ValorantModelApi.getWeapon(this)
 
     companion object {
-        fun fromId(uuid: String?): WeaponType {
-            return entries.find { it.uuid == uuid } ?: UNKNOWN
+        fun fromId(id: String?): WeaponType {
+            return entries.find { it.uuid == id } ?: run {
+                ValorantModelApi.logUnknownId(id, WeaponType)
+                UNKNOWN
+            }
         }
 
         fun fromName(displayName: String): WeaponType {

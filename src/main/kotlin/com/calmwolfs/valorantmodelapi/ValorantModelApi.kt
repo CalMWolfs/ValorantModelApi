@@ -45,10 +45,15 @@ import java.net.URL
 
 object ValorantModelApi {
 
-    private val projectVersion = System.getProperty("project.version")
+    private const val PROJECT_VERSION = "1.2.3"
     private const val BASE_URL = "https://valorant-api.com/v1"
 
     private val requestCache = mutableMapOf<String, Any>()
+
+    fun logUnknownId(id: String?, type: Any) {
+        id ?: return
+        println("[ValorantModelApi-$PROJECT_VERSION] Unknown ${type.javaClass.simpleName}, id: $id")
+    }
 
     // todo allow a way to request just one thing without requesting all of that type
 
@@ -184,7 +189,7 @@ object ValorantModelApi {
         val connection = URL(url).openConnection() as HttpURLConnection
 
         connection.requestMethod = "GET"
-        connection.setRequestProperty("User-Agent", "ValorantModelApi/$projectVersion")
+        connection.setRequestProperty("User-Agent", "ValorantModelApi/$PROJECT_VERSION")
 
         connection.connect()
 
