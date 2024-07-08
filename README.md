@@ -14,8 +14,23 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.CalMWolfs:ValorantModelApi:1.0.2")
+    implementation("com.github.CalMWolfs:ValorantModelApi:1.1.0")
 }
+```
+
+```maven
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
+	<dependency>
+	    <groupId>com.github.CalMWolfs</groupId>
+	    <artifactId>ValorantModelApi</artifactId>
+	    <version>1.1.0</version>
+	</dependency>
 ```
 
 ## Introduction
