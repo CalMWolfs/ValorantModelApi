@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.Theme
+
 enum class ThemeType(val displayName: String, val uuid: String) {
     A21("A21", "754fbb11-4ade-2419-8fde-618bdcdffb8a"),
     A23("A23", "37c24492-4d62-2a87-f789-bb850eb355c0"),
@@ -269,6 +272,9 @@ enum class ThemeType(val displayName: String, val uuid: String) {
     YORU("Yoru", "8d1108da-4333-0b91-3a4a-4596fc5eeeb8"),
     _9_LIVES("9 Lives", "d271bf9f-42f0-3f1d-0198-d6b046c6b9e4"),
     ;
+
+    val theme: Theme?
+        get() = ValorantModelApi.getTheme(this)
 
     companion object {
         fun fromId(uuid: String): ThemeType? {

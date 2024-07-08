@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.LevelBorder
+
 enum class LevelBorderType(val displayName: String, val uuid: String) {
     LEVEL_1("Level 1 Border", "ebc736cd-4b6a-137b-e2b0-1486e31312c9"),
     LEVEL_20("Level 20 Border", "5156a90d-4d65-58d0-f6a8-48a0c003878a"),
@@ -27,6 +30,9 @@ enum class LevelBorderType(val displayName: String, val uuid: String) {
     LEVEL_460("Level 460 Border", "08ab72f1-4fce-ddb5-5fd5-22abd3bc9d49"),
     LEVEL_480("Level 480 Border", "6694d7f7-4ab9-8545-5921-35a9ea8cec24"),
     ;
+
+    val levelBorder: LevelBorder?
+        get() = ValorantModelApi.getLevelBorder(this)
 
     companion object {
         fun fromId(uuid: String): LevelBorderType? {

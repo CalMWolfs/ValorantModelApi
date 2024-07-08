@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.Spray
+
 enum class SprayType(val displayName: String, val uuid: String) {
     ACCIDENTAL_RENAISSANCE("Accidental Renaissance Spray", "be8eeab6-43eb-d0b7-7b38-f6bb25ef7547"),
     AEMONDIR("Aemondir Spray", "bee9d65a-4a34-ac33-91dd-599cacdc4407"),
@@ -613,6 +616,9 @@ enum class SprayType(val displayName: String, val uuid: String) {
     _8_BIT_VALORANT("8-bit VALORANT Spray", "2527155b-4ba6-632b-c745-71900a25ab80"),
     _9_LIVES("9 Lives Spray", "4692c883-4a7e-c8b9-9e4d-79a25ef14763"),
     ;
+
+    val spray: Spray?
+        get() = ValorantModelApi.getSpray(this)
 
     companion object {
         fun fromId(uuid: String): SprayType? {

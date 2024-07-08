@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.Weapon
+
 enum class WeaponType(val displayName: String, val uuid: String) {
     ARES("Ares", "55d8a0f4-4274-ca67-fe2c-06ab45efdf58"),
     BUCKY("Bucky", "910be174-449b-c412-ab22-d0873436b21b"),
@@ -21,6 +24,9 @@ enum class WeaponType(val displayName: String, val uuid: String) {
     STINGER("Stinger", "f7e1b454-4ad4-1063-ec0a-159e56b58941"),
     VANDAL("Vandal", "9c82e19d-4575-0200-1a81-3eacf00cf872"),
     ;
+
+    val weapon: Weapon?
+        get() = ValorantModelApi.getWeapon(this)
 
     companion object {
         fun fromId(uuid: String): WeaponType? {

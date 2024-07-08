@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.Gamemode
+
 enum class GamemodeType(val displayName: String, val uuid: String) {
     DEATHMATCH("Deathmatch", "a8790ec5-4237-f2f0-e93b-08a8e89865b2"),
     ESCALATION("Escalation", "a4ed6518-4741-6dcb-35bd-f884aecdc859"),
@@ -12,6 +15,9 @@ enum class GamemodeType(val displayName: String, val uuid: String) {
     TEAM_DEATHMATCH("Team Deathmatch", "e086db66-47fd-e791-ca81-06a645ac7661"),
     THE_RANGE("The Range", "e2dc3878-4fe5-d132-28f8-3d8c259efcc6"),
     ;
+
+    val gamemode: Gamemode?
+        get() = ValorantModelApi.getGamemode(this)
 
     companion object {
         fun fromId(uuid: String): GamemodeType? {

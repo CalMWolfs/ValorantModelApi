@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.Agent
+
 enum class AgentType(val displayName: String, val uuid: String) {
     ASTRA("Astra", "41fb69c1-4189-7b37-f117-bcaf1e96f1bf"),
     BREACH("Breach", "5f8d3a7f-467b-97f3-062c-13acf203c006"),
@@ -26,6 +29,9 @@ enum class AgentType(val displayName: String, val uuid: String) {
     VIPER("Viper", "707eab51-4836-f488-046a-cda6bf494859"),
     YORU("Yoru", "7f94d92c-4234-0a36-9646-3a87eb8b5c89"),
     ;
+
+    val agent: Agent?
+        get() = ValorantModelApi.getAgent(this)
 
     companion object {
         fun fromId(uuid: String): AgentType? {

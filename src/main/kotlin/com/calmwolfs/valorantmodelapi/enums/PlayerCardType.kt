@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.PlayerCard
+
 enum class PlayerCardType(val displayName: String, val uuid: String) {
     AEMONDIR("Aemondir Card", "b63c2e1f-4ed9-fa3d-0197-4b8776b38e13"),
     ALPHA_THREAT("Alpha Threat Card", "68b0c8c2-4158-7b21-658d-b4ae86f137ce"),
@@ -583,6 +586,10 @@ enum class PlayerCardType(val displayName: String, val uuid: String) {
     _25_N_71_W("25° N, 71° W Card", "4727101c-405c-e9eb-5cd6-638f0487dc76"),
     _9_LIVES("9 Lives Card", "1c0a3c3b-40bd-ed6b-c374-e2887d8a16fe"),
     ;
+
+    val playerCard: PlayerCard?
+        get() = ValorantModelApi.getPlayerCard(this)
+
 
     companion object {
         fun fromId(uuid: String): PlayerCardType? {

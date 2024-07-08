@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.ValorantMap
+
 enum class MapType(val displayName: String, val uuid: String) {
     ASCENT("Ascent", "7eaecc1b-4337-bbf6-6ab9-04b8f06b3319"),
     SPLIT("Split", "d960549e-485c-e861-8d71-aa9d1aed12a2"),
@@ -18,6 +21,9 @@ enum class MapType(val displayName: String, val uuid: String) {
     THE_RANGE("The Range", "ee613ee9-28b7-4beb-9666-08db13bb2244"),
     HAVEN("Haven", "2bee0dc9-4ffe-519b-1cbd-7fbe763a6047"),
     ;
+
+    val map: ValorantMap?
+        get() = ValorantModelApi.getMap(this)
 
     companion object {
         fun fromId(uuid: String): MapType? {

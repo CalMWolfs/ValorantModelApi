@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.Season
+
 enum class SeasonType(val displayName: String, val uuid: String) {
     CLOSED_BETA("Closed Beta", "0df5adb9-4dcb-6899-1306-3e9860661dd3"),
     EPISODE_1_ACT_1("EPISODE 1 ACT 1", "3f61c772-4560-cd3f-5d3f-a7ab5abda6b3"),
@@ -30,6 +33,9 @@ enum class SeasonType(val displayName: String, val uuid: String) {
     EPISODE_9_ACT_2("EPISODE 9 ACT 2", "292f58db-4c17-89a7-b1c0-ba988f0e9d98"),
     EPISODE_9_ACT_3("EPISODE 9 ACT 3", "dcde7346-4085-de4f-c463-2489ed47983b"),
     ;
+
+    val season: Season?
+        get() = ValorantModelApi.getSeason(this)
 
     companion object {
         fun fromId(uuid: String): SeasonType? {

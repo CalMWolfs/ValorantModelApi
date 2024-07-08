@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.Ceremony
+
 enum class CeremonyType(val displayName: String, val uuid: String) {
     ACE("ACE", "1e71c55c-476e-24ac-0687-e48b547dbb35"),
     CLOSER("CLOSER", "b41f4d69-4f9d-ffa9-2be8-e2878cf7f03b"),
@@ -8,6 +11,9 @@ enum class CeremonyType(val displayName: String, val uuid: String) {
     TEAM_ACE("TEAM ACE", "87c91747-4de4-635e-a64b-6ba4faeeae78"),
     THRIFTY("THRIFTY", "bf94f35e-4794-8add-dc7d-fb90a08d3d04"),
     ;
+
+    val ceremony: Ceremony?
+        get() = ValorantModelApi.getCeremony(this)
 
     companion object {
         fun fromId(id: String): CeremonyType? {

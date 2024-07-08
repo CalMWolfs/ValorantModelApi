@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.PlayerTitle
+
 enum class PlayerTitleType(val displayName: String, val uuid: String) {
     ACE("Ace Title", "254021ec-426c-85de-3eba-faaeff17a5f5"),
     AIMBOT("Aimbot Title", "ca0895c6-412b-0f14-0fa4-5dafb9b9fb15"),
@@ -225,6 +228,10 @@ enum class PlayerTitleType(val displayName: String, val uuid: String) {
     _2023_GAME_CHANGERS_WINNER("2023 Game Changers Winner Title", "a5d0a0db-47cf-d1c4-c441-2db1688457c8"),
     _2023_VCT_CHAMPION("2023 VCT Champion Title", "05f48085-4f2a-5726-cf11-dc958e154675"),
     ;
+
+    val playerTitle: PlayerTitle?
+        get() = ValorantModelApi.getPlayerTitle(this)
+
 
     companion object {
         fun fromId(uuid: String): PlayerTitleType? {

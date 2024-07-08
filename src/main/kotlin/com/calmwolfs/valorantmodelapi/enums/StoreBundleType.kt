@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.StoreBundle
+
 enum class StoreBundleType(val displayName: String, val uuid: String) {
     ABYSSAL("Abyssal", "afa6651a-4b93-b7f8-b136-b6b081fc3258"),
     AEMONDIR("Aemondir", "00f15574-4c2e-992c-1664-0c8969f2d7a3"),
@@ -162,6 +165,9 @@ enum class StoreBundleType(val displayName: String, val uuid: String) {
     XENOHUNTER("Xenohunter", "3941ad01-4e3b-46e0-ba3a-ab94f7c67f98"),
     XER0FANG("XERØFANG", "8b97b3f5-4555-6818-5ed0-18b1fb4e1336"),
     ;
+
+    val storeBundle: StoreBundle?
+        get() = ValorantModelApi.getStoreBundle(this)
 
     companion object {
         fun fromId(uuid: String): StoreBundleType? {

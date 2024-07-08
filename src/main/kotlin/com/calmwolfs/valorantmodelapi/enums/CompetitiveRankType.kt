@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.CompetitiveRank
+
 enum class CompetitiveRankType(val displayName: String, val tier: Int) {
     UNRANKED("UNRANKED", 0),
     UNUSED1("Unused1", 1),
@@ -30,6 +33,9 @@ enum class CompetitiveRankType(val displayName: String, val tier: Int) {
     IMMORTAL_3("IMMORTAL 3", 26),
     RADIANT("RADIANT", 27),
     ;
+
+    val rank: CompetitiveRank?
+        get() = ValorantModelApi.getCompetitiveRank(this)
 
     companion object {
         fun fromTier(tier: Int): CompetitiveRankType? {

@@ -1,5 +1,8 @@
 package com.calmwolfs.valorantmodelapi.enums
 
+import com.calmwolfs.valorantmodelapi.ValorantModelApi
+import com.calmwolfs.valorantmodelapi.models.Buddy
+
 enum class BuddyType(val displayName: String, val uuid: String) {
     AEMONDIR("Aemondir Buddy", "c40e6c7d-4180-3aeb-2c3d-b78f1f7e692e"),
     ALLEY_OOP("Alley-oop Buddy", "3d1a73a2-47cf-d82a-c884-b486084c5b42"),
@@ -546,6 +549,9 @@ enum class BuddyType(val displayName: String, val uuid: String) {
     ZEDD("Zedd Buddy", "70963a6d-45b7-8fd4-c6aa-62b2155715aa"),
     ZOOMER_POP("Zoomer Pop Buddy", "4bfcc79c-4352-aa06-53de-259530012e45"),
     ;
+
+    val buddy: Buddy?
+        get() = ValorantModelApi.getBuddy(this)
 
     companion object {
         fun fromId(id: String): BuddyType? {
