@@ -190,7 +190,10 @@ enum class SprayType(val displayName: String, val uuid: String) {
     GOTTA_ONE_TAP("Gotta One Tap Spray", "65e1df93-41ac-b192-d791-3382491f58cc"),
     GO_AGAIN("Go Again? Spray", "0d5ac29c-482f-1a31-eba2-bba3acb2c2c4"),
     GO_TEAM_GO("Go Team Go Spray", "6f6ae8d2-4eb3-f760-06d2-749ec6eba03e"),
-    GRAVITATIONAL_URANIUM_NEUROBLASTER("Gravitational Uranium Neuroblaster Spray", "735e6c3c-4899-532d-60cf-1ba0ce1a450d"),
+    GRAVITATIONAL_URANIUM_NEUROBLASTER(
+        "Gravitational Uranium Neuroblaster Spray",
+        "735e6c3c-4899-532d-60cf-1ba0ce1a450d"
+    ),
     GREATLY_DECREASED("Greatly Decreased? Spray", "9d205163-475a-eb0e-e71d-878635cabce6"),
     GREATLY_INCREASED("Greatly Increased? Spray", "a9b0e97f-4acf-c6fd-2e5d-41a74a79266b"),
     GRIDCRASH("Gridcrash Spray", "6a54a0b7-4392-537d-28b0-17876973171b"),
@@ -609,4 +612,15 @@ enum class SprayType(val displayName: String, val uuid: String) {
     _300("300 Spray", "e4514582-484a-c820-33f2-fc80bcab7a4b"),
     _8_BIT_VALORANT("8-bit VALORANT Spray", "2527155b-4ba6-632b-c745-71900a25ab80"),
     _9_LIVES("9 Lives Spray", "4692c883-4a7e-c8b9-9e4d-79a25ef14763"),
+    ;
+
+    companion object {
+        fun fromId(uuid: String): SprayType? {
+            return entries.find { it.uuid == uuid }
+        }
+
+        fun fromName(displayName: String): SprayType? {
+            return entries.find { it.displayName == displayName }
+        }
+    }
 }

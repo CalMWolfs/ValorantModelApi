@@ -17,4 +17,15 @@ enum class MapType(val displayName: String, val uuid: String) {
     ICEBOX("Icebox", "e2ad5c54-4114-a870-9641-8ea21279579a"),
     THE_RANGE("The Range", "ee613ee9-28b7-4beb-9666-08db13bb2244"),
     HAVEN("Haven", "2bee0dc9-4ffe-519b-1cbd-7fbe763a6047"),
+    ;
+
+    companion object {
+        fun fromId(uuid: String): MapType? {
+            return entries.find { it.uuid == uuid }
+        }
+
+        fun fromName(displayName: String): MapType? {
+            return entries.find { it.displayName == displayName }
+        }
+    }
 }

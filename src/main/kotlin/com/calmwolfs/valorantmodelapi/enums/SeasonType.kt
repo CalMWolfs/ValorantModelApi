@@ -29,4 +29,15 @@ enum class SeasonType(val displayName: String, val uuid: String) {
     EPISODE_9_ACT_1("EPISODE 9 ACT 1", "52ca6698-41c1-e7de-4008-8994d2221209"),
     EPISODE_9_ACT_2("EPISODE 9 ACT 2", "292f58db-4c17-89a7-b1c0-ba988f0e9d98"),
     EPISODE_9_ACT_3("EPISODE 9 ACT 3", "dcde7346-4085-de4f-c463-2489ed47983b"),
+    ;
+
+    companion object {
+        fun fromId(uuid: String): SeasonType? {
+            return entries.find { it.uuid == uuid }
+        }
+
+        fun fromName(displayName: String): SeasonType? {
+            return entries.find { it.displayName == displayName }
+        }
+    }
 }

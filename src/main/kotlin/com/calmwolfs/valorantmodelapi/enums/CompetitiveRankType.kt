@@ -29,4 +29,15 @@ enum class CompetitiveRankType(val displayName: String, val tier: Int) {
     IMMORTAL_2("IMMORTAL 2", 25),
     IMMORTAL_3("IMMORTAL 3", 26),
     RADIANT("RADIANT", 27),
+    ;
+
+    companion object {
+        fun fromTier(tier: Int): CompetitiveRankType? {
+            return entries.find { it.tier == tier }
+        }
+
+        fun fromName(name: String): CompetitiveRankType? {
+            return entries.find { it.displayName == name }
+        }
+    }
 }

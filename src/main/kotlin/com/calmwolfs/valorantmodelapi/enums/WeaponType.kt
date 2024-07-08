@@ -20,4 +20,15 @@ enum class WeaponType(val displayName: String, val uuid: String) {
     SPECTRE("Spectre", "462080d1-4035-2937-7c09-27aa2a5c27a7"),
     STINGER("Stinger", "f7e1b454-4ad4-1063-ec0a-159e56b58941"),
     VANDAL("Vandal", "9c82e19d-4575-0200-1a81-3eacf00cf872"),
+    ;
+
+    companion object {
+        fun fromId(uuid: String): WeaponType? {
+            return entries.find { it.uuid == uuid }
+        }
+
+        fun fromName(displayName: String): WeaponType? {
+            return entries.find { it.displayName == displayName }
+        }
+    }
 }

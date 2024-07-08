@@ -1,29 +1,30 @@
 import com.calmwolfs.valorantmodelapi.ValorantModelApi
-import com.calmwolfs.valorantmodelapi.models.CompetitiveRank
-import com.calmwolfs.valorantmodelapi.models.Season
-import com.calmwolfs.valorantmodelapi.models.Weapon
+import com.calmwolfs.valorantmodelapi.models.LevelBorder
 
 fun main(args: Array<String>) {
-    val data = ValorantModelApi.getCompetitiveRanks()
+//    val testData = ValorantModelApi.getAgent(AgentType.BRIMSTONE)
+//    println(testData)
+
+    val data = ValorantModelApi.getLevelBorders()
     createEnumValues(data)
 }
 
-fun createEnumValues(data: List<CompetitiveRank>) {
+fun createEnumValues(data: List<LevelBorder>) {
 //    for (season in data) {
 //        val seasonName = constructSeasonName(season, data) ?: continue
 //
 //        println("${formatEnumName(seasonName)}(\"${seasonName}\", \"${season.uuid}\"),")
 //    }
     data.forEach {
-        println("${formatEnumName(it.tierName)}(\"${it.tierName}\", \"${it.tier}\"),")
+        println("${formatEnumName(it.displayName)}(\"${it.displayName}\", \"${it.uuid}\"),")
     }
 }
 
-fun constructSeasonName(season: Season, seasons: List<Season>): String? {
-    val seasonParent = season.parentUuid ?: return null
-    val parent = seasons.find { it.uuid == seasonParent } ?: return null
-    return "${parent.displayName} ${season.displayName}"
-}
+//fun constructSeasonName(season: Season, seasons: List<Season>): String? {
+//    val seasonParent = season.parentUuid ?: return null
+//    val parent = seasons.find { it.uuid == seasonParent } ?: return null
+//    return "${parent.displayName} ${season.displayName}"
+//}
 
 fun formatEnumName(name: String?): String {
     name ?: return "NONE"
@@ -49,6 +50,7 @@ fun formatEnumName(name: String?): String {
         .replace("_SPRAY", "")
         .replace("_CARD", "")
         .replace("_TITLE", "")
+        .replace("_BORDER", "")
         .replace("°", "")
         .replace("__", "_")
         .removeSuffix("_")

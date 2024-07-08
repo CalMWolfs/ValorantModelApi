@@ -235,7 +235,10 @@ enum class BuddyType(val displayName: String, val uuid: String) {
     GL_HAVE_CAT("GL Have Cat Buddy", "d8c85cae-44fd-8d97-a948-25acfe80b109"),
     GOOD_BOY_BRUNO("Good Boy, Bruno Buddy", "2d462f8e-47af-0678-dfa1-c3bc7c307ca7"),
     GOOD_LUCK_KNOT("Good Luck Knot Buddy", "fb5a1cb7-4508-bcb8-f8e4-75b6d2145317"),
-    GRAVITATIONAL_URANIUM_NEUROBLASTER("Gravitational Uranium Neuroblaster Buddy", "90356707-45e1-5d0b-2b34-2d9aadf78b4e"),
+    GRAVITATIONAL_URANIUM_NEUROBLASTER(
+        "Gravitational Uranium Neuroblaster Buddy",
+        "90356707-45e1-5d0b-2b34-2d9aadf78b4e"
+    ),
     GRIM_DELIGHT("Grim Delight Buddy", "7cf1fc2c-4456-fa8f-b9f6-c9be7092163f"),
     HALO_HALO("Halo Halo Buddy", "f671190d-4dfb-89ce-b668-28bf81ecb33a"),
     HAMMER_TIME("Hammer Time Buddy", "8fbf09a5-4ad2-46ca-d44e-26b46587a1bf"),
@@ -542,4 +545,15 @@ enum class BuddyType(val displayName: String, val uuid: String) {
     YEAR_ONE("Year One Buddy", "145da845-43f6-d4d4-d72d-53bd1d78cf28"),
     ZEDD("Zedd Buddy", "70963a6d-45b7-8fd4-c6aa-62b2155715aa"),
     ZOOMER_POP("Zoomer Pop Buddy", "4bfcc79c-4352-aa06-53de-259530012e45"),
+    ;
+
+    companion object {
+        fun fromId(id: String): BuddyType? {
+            return entries.find { it.uuid == id }
+        }
+
+        fun fromName(name: String): BuddyType? {
+            return entries.find { it.displayName == name }
+        }
+    }
 }

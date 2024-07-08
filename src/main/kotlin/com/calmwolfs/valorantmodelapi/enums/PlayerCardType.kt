@@ -161,7 +161,10 @@ enum class PlayerCardType(val displayName: String, val uuid: String) {
     FORTUNES_HAND_JUDGEMENT("Fortune's Hand // Judgement Card ", "e528a1a4-4db7-1dfa-13e6-b89e80217601"),
     FORTUNES_HAND_THE_EMPRESS("Fortune's Hand // The Empress Card", "e7e71e87-4ce9-6fbb-5f72-e08b59b14d57"),
     FORTUNES_HAND_THE_HERMIT("Fortune's Hand // The Hermit Card", "31360c4e-421c-c196-06b2-56b05ea6216b"),
-    FORTUNES_HAND_THE_HIGH_PRIESTESS("Fortune's Hand // The High Priestess Card", "4ee37b35-47cc-80ab-e70f-469b8ddd4831"),
+    FORTUNES_HAND_THE_HIGH_PRIESTESS(
+        "Fortune's Hand // The High Priestess Card",
+        "4ee37b35-47cc-80ab-e70f-469b8ddd4831"
+    ),
     FORTUNES_HAND_THE_MAGICIAN("Fortune's Hand // The Magician Card", "4ea44402-4f79-98ad-230b-12a053371667"),
     FREEHAND("Freehand Card", "f26bfcbc-4ca7-81cb-149b-3596d8dbe35c"),
     FRENZY_SCHEMA("Frenzy Schema Card", "7dc703c4-43f2-b5df-8f3b-34b14a08cd0b"),
@@ -189,7 +192,10 @@ enum class PlayerCardType(val displayName: String, val uuid: String) {
     GOLDWING("Goldwing Card", "89fdd50e-439b-ebeb-0ef2-af8271550943"),
     GOOD_JOB_PAUL("Good Job, Paul! Card", "8dc65b32-4f6a-0725-aff9-babb80e05f41"),
     GRAND_DESIGNS("Grand Designs Card", "2550c4b9-4467-cf9b-f922-dbafae253fee"),
-    GRAVITATIONAL_URANIUM_NEUROBLASTER("Gravitational Uranium Neuroblaster Card", "c2f90c55-49be-93a5-daf4-6393d9d3f6fc"),
+    GRAVITATIONAL_URANIUM_NEUROBLASTER(
+        "Gravitational Uranium Neuroblaster Card",
+        "c2f90c55-49be-93a5-daf4-6393d9d3f6fc"
+    ),
     GRIDCRASH("Gridcrash Card", "aeb4ce01-4781-9330-43cb-b991d1122c99"),
     GUARDRAIL("Guardrail Card", "98e508d1-487f-f3e0-1abb-88aa9d177787"),
     HARBOR_ID("Harbor ID Card", "a3b93c7b-440b-ca21-f87d-f88696f0ebd6"),
@@ -576,4 +582,15 @@ enum class PlayerCardType(val displayName: String, val uuid: String) {
     _2022_GAME_CHANGERS_CHAMPIONSHIP("2022 Game Changers Championship Card", "6a578461-430d-e0a9-d67e-4c967e0bdf1a"),
     _25_N_71_W("25° N, 71° W Card", "4727101c-405c-e9eb-5cd6-638f0487dc76"),
     _9_LIVES("9 Lives Card", "1c0a3c3b-40bd-ed6b-c374-e2887d8a16fe"),
+    ;
+
+    companion object {
+        fun fromId(uuid: String): PlayerCardType? {
+            return entries.find { it.uuid == uuid }
+        }
+
+        fun fromName(displayName: String): PlayerCardType? {
+            return entries.find { it.displayName == displayName }
+        }
+    }
 }

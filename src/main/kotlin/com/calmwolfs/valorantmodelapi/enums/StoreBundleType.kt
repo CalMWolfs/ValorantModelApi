@@ -161,4 +161,15 @@ enum class StoreBundleType(val displayName: String, val uuid: String) {
     WINTERWUNDERLAND("Winterwunderland", "79d2f4b9-4066-8b5b-884f-1d95b33d2ac5"),
     XENOHUNTER("Xenohunter", "3941ad01-4e3b-46e0-ba3a-ab94f7c67f98"),
     XER0FANG("XERØFANG", "8b97b3f5-4555-6818-5ed0-18b1fb4e1336"),
+    ;
+
+    companion object {
+        fun fromId(uuid: String): StoreBundleType? {
+            return entries.find { it.uuid == uuid }
+        }
+
+        fun fromName(displayName: String): StoreBundleType? {
+            return entries.find { it.displayName == displayName }
+        }
+    }
 }

@@ -224,4 +224,15 @@ enum class PlayerTitleType(val displayName: String, val uuid: String) {
     _2022_VCT_CHAMPION("2022 VCT Champion Title", "a6d9e243-4046-b025-358e-0087b4b7fcf3"),
     _2023_GAME_CHANGERS_WINNER("2023 Game Changers Winner Title", "a5d0a0db-47cf-d1c4-c441-2db1688457c8"),
     _2023_VCT_CHAMPION("2023 VCT Champion Title", "05f48085-4f2a-5726-cf11-dc958e154675"),
+    ;
+
+    companion object {
+        fun fromId(uuid: String): PlayerTitleType? {
+            return entries.find { it.uuid == uuid }
+        }
+
+        fun fromName(displayName: String): PlayerTitleType? {
+            return entries.find { it.displayName == displayName }
+        }
+    }
 }

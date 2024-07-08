@@ -1,4 +1,3 @@
-
 package com.calmwolfs.valorantmodelapi.enums
 
 enum class GamemodeType(val displayName: String, val uuid: String) {
@@ -12,4 +11,15 @@ enum class GamemodeType(val displayName: String, val uuid: String) {
     SWIFTPLAY("Swiftplay", "5d0f264b-4ebe-cc63-c147-809e1374484b"),
     TEAM_DEATHMATCH("Team Deathmatch", "e086db66-47fd-e791-ca81-06a645ac7661"),
     THE_RANGE("The Range", "e2dc3878-4fe5-d132-28f8-3d8c259efcc6"),
+    ;
+
+    companion object {
+        fun fromId(uuid: String): GamemodeType? {
+            return entries.find { it.uuid == uuid }
+        }
+
+        fun fromName(displayName: String): GamemodeType? {
+            return entries.find { it.displayName == displayName }
+        }
+    }
 }

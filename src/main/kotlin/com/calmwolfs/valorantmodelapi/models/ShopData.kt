@@ -1,4 +1,3 @@
-
 package com.calmwolfs.valorantmodelapi.models
 
 data class ShopData(
