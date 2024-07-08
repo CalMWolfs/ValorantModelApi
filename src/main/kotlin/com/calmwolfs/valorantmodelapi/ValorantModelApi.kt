@@ -180,7 +180,7 @@ object ValorantModelApi {
 
     @Throws(IOException::class)
     private fun getRawJsonResponse(requestPath: String): JsonObject {
-        val url = "$BASE_URL/$requestPath"
+        val url = "$BASE_URL/${requestPath.replace(" ", "%20")}"
         val connection = URL(url).openConnection() as HttpURLConnection
 
         connection.requestMethod = "GET"
