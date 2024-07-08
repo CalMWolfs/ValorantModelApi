@@ -11,7 +11,7 @@ data class Agent(
     val bustPortrait: String,
     val fullPortrait: String,
     val fullPortraitV2: String,
-    val killFeedPortrait: String,
+    val killfeedPortrait: String,
     val background: String,
     val backgroundGradientColors: List<String>,
     val assetPath: String,
