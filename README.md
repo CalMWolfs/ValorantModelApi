@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.CalMWolfs:ValorantModelApi:1.2.2")
+    implementation("com.github.CalMWolfs:ValorantModelApi:1.2.3")
 }
 ```
 
@@ -29,7 +29,7 @@ dependencies {
 	<dependency>
 	    <groupId>com.github.CalMWolfs</groupId>
 	    <artifactId>ValorantModelApi</artifactId>
-	    <version>1.2.2</version>
+	    <version>1.2.3</version>
 	</dependency>
 ```
 
