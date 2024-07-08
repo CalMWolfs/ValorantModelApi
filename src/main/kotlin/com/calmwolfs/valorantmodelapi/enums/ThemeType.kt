@@ -271,18 +271,23 @@ enum class ThemeType(val displayName: String, val uuid: String) {
     YINYANG("YinYang", "2a6039fb-48d2-e594-8c9b-94a5ba723fb9"),
     YORU("Yoru", "8d1108da-4333-0b91-3a4a-4596fc5eeeb8"),
     _9_LIVES("9 Lives", "d271bf9f-42f0-3f1d-0198-d6b046c6b9e4"),
+    UNKNOWN("Unknown", "")
     ;
+
+    override fun toString(): String {
+        return displayName
+    }
 
     val theme: Theme?
         get() = ValorantModelApi.getTheme(this)
 
     companion object {
-        fun fromId(uuid: String): ThemeType? {
-            return entries.find { it.uuid == uuid }
+        fun fromId(uuid: String?): ThemeType {
+            return entries.find { it.uuid == uuid } ?: UNKNOWN
         }
 
-        fun fromName(displayName: String): ThemeType? {
-            return entries.find { it.displayName == displayName }
+        fun fromName(displayName: String): ThemeType {
+            return entries.find { it.displayName == displayName } ?: UNKNOWN
         }
     }
 }

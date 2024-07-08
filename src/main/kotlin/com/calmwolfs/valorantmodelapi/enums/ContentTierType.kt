@@ -9,18 +9,23 @@ enum class ContentTierType(val displayName: String, val uuid: String) {
     PREMIUM_EDITION("Premium Edition", "60bca009-4182-7998-dee7-b8a2558dc369"),
     SELECT_EDITION("Select Edition", "12683d76-48d7-84a3-4e09-6985794f0445"),
     ULTRA_EDITION("Ultra Edition", "411e4a55-4e59-7757-41f0-86a53f101bb5"),
+    UNKNOWN("Unknown", "")
     ;
+
+    override fun toString(): String {
+        return displayName
+    }
 
     val contentTier: ContentTier?
         get() = ValorantModelApi.getContentTier(this)
 
     companion object {
-        fun fromId(uuid: String): ContentTierType? {
-            return entries.find { it.uuid == uuid }
+        fun fromId(uuid: String?): ContentTierType {
+            return entries.find { it.uuid == uuid } ?: UNKNOWN
         }
 
-        fun fromName(displayName: String): ContentTierType? {
-            return entries.find { it.displayName == displayName }
+        fun fromName(displayName: String): ContentTierType {
+            return entries.find { it.displayName == displayName } ?: UNKNOWN
         }
     }
 }

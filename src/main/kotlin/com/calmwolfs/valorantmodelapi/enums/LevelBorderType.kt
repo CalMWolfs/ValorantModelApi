@@ -29,18 +29,23 @@ enum class LevelBorderType(val displayName: String, val uuid: String) {
     LEVEL_440("Level 440 Border", "086dd1ab-4889-793a-4b33-0a99e311fa25"),
     LEVEL_460("Level 460 Border", "08ab72f1-4fce-ddb5-5fd5-22abd3bc9d49"),
     LEVEL_480("Level 480 Border", "6694d7f7-4ab9-8545-5921-35a9ea8cec24"),
+    UNKNOWN("Unknown", "")
     ;
+
+    override fun toString(): String {
+        return displayName
+    }
 
     val levelBorder: LevelBorder?
         get() = ValorantModelApi.getLevelBorder(this)
 
     companion object {
-        fun fromId(uuid: String): LevelBorderType? {
-            return entries.find { it.uuid == uuid }
+        fun fromId(uuid: String?): LevelBorderType {
+            return entries.find { it.uuid == uuid } ?: UNKNOWN
         }
 
-        fun fromName(displayName: String): LevelBorderType? {
-            return entries.find { it.displayName == displayName }
+        fun fromName(displayName: String): LevelBorderType {
+            return entries.find { it.displayName == displayName } ?: UNKNOWN
         }
     }
 }

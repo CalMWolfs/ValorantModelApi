@@ -548,18 +548,23 @@ enum class BuddyType(val displayName: String, val uuid: String) {
     YEAR_ONE("Year One Buddy", "145da845-43f6-d4d4-d72d-53bd1d78cf28"),
     ZEDD("Zedd Buddy", "70963a6d-45b7-8fd4-c6aa-62b2155715aa"),
     ZOOMER_POP("Zoomer Pop Buddy", "4bfcc79c-4352-aa06-53de-259530012e45"),
+    UNKNOWN("Unknown Buddy", ""),
     ;
+
+    override fun toString(): String {
+        return displayName
+    }
 
     val buddy: Buddy?
         get() = ValorantModelApi.getBuddy(this)
 
     companion object {
-        fun fromId(id: String): BuddyType? {
-            return entries.find { it.uuid == id }
+        fun fromId(id: String?): BuddyType {
+            return entries.find { it.uuid == id } ?: UNKNOWN
         }
 
-        fun fromName(name: String): BuddyType? {
-            return entries.find { it.displayName == name }
+        fun fromName(name: String): BuddyType {
+            return entries.find { it.displayName == name } ?: UNKNOWN
         }
     }
 }

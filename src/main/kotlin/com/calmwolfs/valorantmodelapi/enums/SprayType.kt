@@ -615,18 +615,23 @@ enum class SprayType(val displayName: String, val uuid: String) {
     _300("300 Spray", "e4514582-484a-c820-33f2-fc80bcab7a4b"),
     _8_BIT_VALORANT("8-bit VALORANT Spray", "2527155b-4ba6-632b-c745-71900a25ab80"),
     _9_LIVES("9 Lives Spray", "4692c883-4a7e-c8b9-9e4d-79a25ef14763"),
+    UNKNOWN("Unknown", "")
     ;
+
+    override fun toString(): String {
+        return displayName
+    }
 
     val spray: Spray?
         get() = ValorantModelApi.getSpray(this)
 
     companion object {
-        fun fromId(uuid: String): SprayType? {
-            return entries.find { it.uuid == uuid }
+        fun fromId(uuid: String?): SprayType {
+            return entries.find { it.uuid == uuid } ?: UNKNOWN
         }
 
-        fun fromName(displayName: String): SprayType? {
-            return entries.find { it.displayName == displayName }
+        fun fromName(displayName: String): SprayType {
+            return entries.find { it.displayName == displayName } ?: UNKNOWN
         }
     }
 }

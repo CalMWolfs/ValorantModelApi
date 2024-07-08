@@ -28,18 +28,23 @@ enum class AgentType(val displayName: String, val uuid: String) {
     SOVA("Sova", "320b2a48-4d9b-a075-30f1-1f93a9b638fa"),
     VIPER("Viper", "707eab51-4836-f488-046a-cda6bf494859"),
     YORU("Yoru", "7f94d92c-4234-0a36-9646-3a87eb8b5c89"),
+    UNKNOWN("Unknown", "unknown"),
     ;
+
+    override fun toString(): String {
+        return displayName
+    }
 
     val agent: Agent?
         get() = ValorantModelApi.getAgent(this)
 
     companion object {
-        fun fromId(uuid: String): AgentType? {
-            return entries.find { it.uuid == uuid }
+        fun fromId(uuid: String?): AgentType {
+            return entries.find { it.uuid == uuid } ?: UNKNOWN
         }
 
-        fun fromName(displayName: String): AgentType? {
-            return entries.find { it.displayName == displayName }
+        fun fromName(displayName: String): AgentType {
+            return entries.find { it.displayName == displayName } ?: UNKNOWN
         }
     }
 }

@@ -585,19 +585,24 @@ enum class PlayerCardType(val displayName: String, val uuid: String) {
     _2022_GAME_CHANGERS_CHAMPIONSHIP("2022 Game Changers Championship Card", "6a578461-430d-e0a9-d67e-4c967e0bdf1a"),
     _25_N_71_W("25° N, 71° W Card", "4727101c-405c-e9eb-5cd6-638f0487dc76"),
     _9_LIVES("9 Lives Card", "1c0a3c3b-40bd-ed6b-c374-e2887d8a16fe"),
+    UNKNOWN("Unknown", "")
     ;
+
+    override fun toString(): String {
+        return displayName
+    }
 
     val playerCard: PlayerCard?
         get() = ValorantModelApi.getPlayerCard(this)
 
 
     companion object {
-        fun fromId(uuid: String): PlayerCardType? {
-            return entries.find { it.uuid == uuid }
+        fun fromId(uuid: String?): PlayerCardType {
+            return entries.find { it.uuid == uuid } ?: UNKNOWN
         }
 
-        fun fromName(displayName: String): PlayerCardType? {
-            return entries.find { it.displayName == displayName }
+        fun fromName(displayName: String): PlayerCardType {
+            return entries.find { it.displayName == displayName } ?: UNKNOWN
         }
     }
 }

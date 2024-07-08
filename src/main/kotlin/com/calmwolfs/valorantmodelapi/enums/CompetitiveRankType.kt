@@ -32,18 +32,23 @@ enum class CompetitiveRankType(val displayName: String, val tier: Int) {
     IMMORTAL_2("IMMORTAL 2", 25),
     IMMORTAL_3("IMMORTAL 3", 26),
     RADIANT("RADIANT", 27),
+    UNKNOWN("UNKNOWN", -1)
     ;
+
+    override fun toString(): String {
+        return displayName
+    }
 
     val rank: CompetitiveRank?
         get() = ValorantModelApi.getCompetitiveRank(this)
 
     companion object {
-        fun fromTier(tier: Int): CompetitiveRankType? {
-            return entries.find { it.tier == tier }
+        fun fromTier(tier: Int?): CompetitiveRankType {
+            return entries.find { it.tier == tier } ?: UNKNOWN
         }
 
-        fun fromName(name: String): CompetitiveRankType? {
-            return entries.find { it.displayName == name }
+        fun fromName(name: String): CompetitiveRankType {
+            return entries.find { it.displayName == name } ?: UNKNOWN
         }
     }
 }
