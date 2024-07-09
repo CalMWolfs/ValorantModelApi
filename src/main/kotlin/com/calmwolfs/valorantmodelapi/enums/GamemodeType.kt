@@ -22,7 +22,7 @@ enum class GamemodeType(val displayName: String, val uuid: String) {
     }
 
     val gamemode: Gamemode?
-        get() = ValorantModelApi.getGamemode(this)
+        get() = runCatching { ValorantModelApi.getGamemode(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): GamemodeType {

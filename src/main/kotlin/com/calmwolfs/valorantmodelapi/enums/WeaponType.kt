@@ -31,7 +31,7 @@ enum class WeaponType(val displayName: String, val uuid: String) {
     }
 
     val weapon: Weapon?
-        get() = ValorantModelApi.getWeapon(this)
+        get() = runCatching { ValorantModelApi.getWeapon(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): WeaponType {

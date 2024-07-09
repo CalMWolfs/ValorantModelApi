@@ -17,7 +17,7 @@ enum class ContentTierType(val displayName: String, val uuid: String) {
     }
 
     val contentTier: ContentTier?
-        get() = ValorantModelApi.getContentTier(this)
+        get() = runCatching { ValorantModelApi.getContentTier(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): ContentTierType {

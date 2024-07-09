@@ -14,7 +14,7 @@ enum class GamemodeEquippableType(val displayName: String, val uuid: String) {
     }
 
     val gamemodeEquippable: GamemodeEquippable?
-        get() = ValorantModelApi.getGamemodeEquippable(this)
+        get() = runCatching { ValorantModelApi.getGamemodeEquippable(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): GamemodeEquippableType {

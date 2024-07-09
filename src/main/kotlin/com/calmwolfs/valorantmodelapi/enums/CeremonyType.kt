@@ -18,7 +18,7 @@ enum class CeremonyType(val displayName: String, val uuid: String) {
     }
 
     val ceremony: Ceremony?
-        get() = ValorantModelApi.getCeremony(this)
+        get() = runCatching { ValorantModelApi.getCeremony(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): CeremonyType {

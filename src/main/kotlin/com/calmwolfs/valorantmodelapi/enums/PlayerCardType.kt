@@ -593,7 +593,7 @@ enum class PlayerCardType(val displayName: String, val uuid: String) {
     }
 
     val playerCard: PlayerCard?
-        get() = ValorantModelApi.getPlayerCard(this)
+        get() = runCatching { ValorantModelApi.getPlayerCard(this) }.getOrNull()
 
 
     companion object {

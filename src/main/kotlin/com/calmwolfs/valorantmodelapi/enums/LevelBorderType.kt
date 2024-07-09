@@ -37,7 +37,7 @@ enum class LevelBorderType(val displayName: String, val uuid: String) {
     }
 
     val levelBorder: LevelBorder?
-        get() = ValorantModelApi.getLevelBorder(this)
+        get() = runCatching { ValorantModelApi.getLevelBorder(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): LevelBorderType {

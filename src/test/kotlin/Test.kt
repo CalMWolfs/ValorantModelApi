@@ -3,8 +3,9 @@ import com.calmwolfs.valorantmodelapi.enums.AgentType
 import com.calmwolfs.valorantmodelapi.models.LevelBorder
 
 fun main(args: Array<String>) {
-    val testData = ValorantModelApi.getAgent(AgentType.BRIMSTONE)
+    val testData = AgentType.BRIMSTONE.agent
     println(testData)
+    ValorantModelApi.closeClient()
 
 //    val data = ValorantModelApi.getLevelBorders()
 //    createEnumValues(data)

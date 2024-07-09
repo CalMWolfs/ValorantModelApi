@@ -14,7 +14,7 @@ enum class GearType(val displayName: String, val uuid: String) {
     }
 
     val gear: Gear?
-        get() = ValorantModelApi.getGear(this)
+        get() = runCatching { ValorantModelApi.getGear(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): GearType {

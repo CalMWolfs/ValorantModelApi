@@ -235,7 +235,7 @@ enum class PlayerTitleType(val displayName: String, val uuid: String) {
     }
 
     val playerTitle: PlayerTitle?
-        get() = ValorantModelApi.getPlayerTitle(this)
+        get() = runCatching { ValorantModelApi.getPlayerTitle(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): PlayerTitleType {

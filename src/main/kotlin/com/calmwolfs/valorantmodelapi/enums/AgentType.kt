@@ -36,7 +36,7 @@ enum class AgentType(val displayName: String, val uuid: String) {
     }
 
     val agent: Agent?
-        get() = ValorantModelApi.getAgent(this)
+        get() = runCatching { ValorantModelApi.getAgent(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): AgentType {

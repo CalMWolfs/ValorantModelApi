@@ -279,7 +279,7 @@ enum class ThemeType(val displayName: String, val uuid: String) {
     }
 
     val theme: Theme?
-        get() = ValorantModelApi.getTheme(this)
+        get() = runCatching { ValorantModelApi.getTheme(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): ThemeType {

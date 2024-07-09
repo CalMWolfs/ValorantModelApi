@@ -172,7 +172,7 @@ enum class StoreBundleType(val displayName: String, val uuid: String) {
     }
 
     val storeBundle: StoreBundle?
-        get() = ValorantModelApi.getStoreBundle(this)
+        get() = runCatching { ValorantModelApi.getStoreBundle(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): StoreBundleType {

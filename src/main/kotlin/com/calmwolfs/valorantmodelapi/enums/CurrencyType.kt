@@ -16,7 +16,7 @@ enum class CurrencyType(val displayName: String, val uuid: String) {
     }
 
     val currency: Currency?
-        get() = ValorantModelApi.getCurrency(this)
+        get() = runCatching { ValorantModelApi.getCurrency(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): CurrencyType {

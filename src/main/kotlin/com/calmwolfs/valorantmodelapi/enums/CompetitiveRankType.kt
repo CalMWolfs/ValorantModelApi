@@ -40,7 +40,7 @@ enum class CompetitiveRankType(val displayName: String, val tier: Int) {
     }
 
     val rank: CompetitiveRank?
-        get() = ValorantModelApi.getCompetitiveRank(this)
+        get() = runCatching { ValorantModelApi.getCompetitiveRank(this) }.getOrNull()
 
     companion object {
         fun fromTier(tier: Int?): CompetitiveRankType {

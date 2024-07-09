@@ -28,7 +28,7 @@ enum class MapType(val displayName: String, val uuid: String) {
     }
 
     val map: ValorantMap?
-        get() = ValorantModelApi.getMap(this)
+        get() = runCatching { ValorantModelApi.getMap(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): MapType {

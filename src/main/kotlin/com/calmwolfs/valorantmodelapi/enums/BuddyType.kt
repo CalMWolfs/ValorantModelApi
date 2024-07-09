@@ -556,7 +556,7 @@ enum class BuddyType(val displayName: String, val uuid: String) {
     }
 
     val buddy: Buddy?
-        get() = ValorantModelApi.getBuddy(this)
+        get() = runCatching { ValorantModelApi.getBuddy(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): BuddyType {

@@ -64,6 +64,10 @@ object ValorantModelApi {
         println("[ValorantModelApi-$PROJECT_VERSION] Unknown ${type.javaClass.simpleName}, id: $id")
     }
 
+    fun closeClient() {
+        client.close()
+    }
+
     // todo allow a way to request just one thing without requesting all of that type
 
     @JvmStatic

@@ -623,7 +623,7 @@ enum class SprayType(val displayName: String, val uuid: String) {
     }
 
     val spray: Spray?
-        get() = ValorantModelApi.getSpray(this)
+        get() = runCatching { ValorantModelApi.getSpray(this) }.getOrNull()
 
     companion object {
         fun fromId(id: String?): SprayType {
