@@ -290,6 +290,7 @@ object ValorantModelApi {
     // todo add events
     // todo add contracts
 
+    @JvmStatic
     fun clearCache() {
         requestCache.clear()
     }
