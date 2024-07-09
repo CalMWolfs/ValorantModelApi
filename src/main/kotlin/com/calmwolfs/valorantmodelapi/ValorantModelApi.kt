@@ -39,14 +39,23 @@ import com.calmwolfs.valorantmodelapi.models.Version
 import com.calmwolfs.valorantmodelapi.models.Weapon
 import com.calmwolfs.valorantmodelapi.utils.GsonUtils
 import com.google.gson.JsonObject
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.request.header
+import io.ktor.client.request.request
+import io.ktor.client.statement.bodyAsText
+import io.ktor.http.HttpMethod
+import io.ktor.http.HttpStatusCode
+import kotlinx.coroutines.runBlocking
 import java.io.IOException
-import java.net.HttpURLConnection
-import java.net.URL
+import kotlin.collections.set
 
 object ValorantModelApi {
 
     private const val PROJECT_VERSION = "1.2.3"
     private const val BASE_URL = "https://valorant-api.com/v1"
+
+    private val client = HttpClient(CIO)
 
     private val requestCache = mutableMapOf<String, Any>()
 
@@ -296,21 +305,21 @@ object ValorantModelApi {
     }
 
     @Throws(IOException::class)
-    private inline fun <reified T : Any> sendRequest(requestPath: String, force: Boolean): T {
+    private inline fun <reified T : Any> sendRequest(requestPath: String, force: Boolean): T = runBlocking {
         if (!force && requestCache.containsKey(requestPath)) {
-            return requestCache[requestPath] as T
+            return@runBlocking requestCache[requestPath] as T
         }
         val responseJsonObject = getRawJsonResponse(requestPath)
         val result = GsonUtils.gson.fromJson(responseJsonObject.getAsJsonObject("data"), T::class.java)
         requestCache[requestPath] = result
-        return result
+        return@runBlocking result
     }
 
     @Throws(IOException::class)
     @Suppress("UNCHECKED_CAST")
-    private inline fun <reified T : Any> sendRequestList(requestPath: String, force: Boolean): List<T> {
+    private inline fun <reified T : Any> sendRequestList(requestPath: String, force: Boolean): List<T> = runBlocking {
         if (!force && requestCache.containsKey(requestPath)) {
-            return requestCache[requestPath] as List<T>
+            return@runBlocking requestCache[requestPath] as List<T>
         }
         val responseJsonObject = getRawJsonResponse(requestPath)
         val data = responseJsonObject.getAsJsonArray("data")
@@ -319,27 +328,23 @@ object ValorantModelApi {
             result.add(GsonUtils.gson.fromJson(it, T::class.java))
         }
         requestCache[requestPath] = result
-        return result
+        return@runBlocking result
     }
 
     @Throws(IOException::class)
-    private fun getRawJsonResponse(requestPath: String): JsonObject {
+    private suspend fun getRawJsonResponse(requestPath: String): JsonObject {
         val url = "$BASE_URL/${requestPath.replace(" ", "%20")}"
-        val connection = URL(url).openConnection() as HttpURLConnection
 
-        connection.requestMethod = "GET"
-        connection.setRequestProperty("User-Agent", "ValorantModelApi/$PROJECT_VERSION")
-
-        connection.connect()
-
-        when (val responseCode = connection.responseCode) {
-            200 -> Unit
-            else -> {
-                throw IOException("Unknown error response code: $responseCode")
-            }
+        val response = client.request(url) {
+            method = HttpMethod.Get
+            header("User-Agent", "ValorantModelApi/$PROJECT_VERSION")
         }
 
-        val response = connection.inputStream.bufferedReader().use { it.readText() }
-        return GsonUtils.gson.fromJson(response, JsonObject::class.java)
+        if (response.status != HttpStatusCode.OK) {
+            throw IOException("Unknown error response code: ${response.status.value}")
+        }
+
+        val responseBody = response.bodyAsText()
+        return GsonUtils.gson.fromJson(responseBody, JsonObject::class.java)
     }
 }
