@@ -40,7 +40,7 @@ import com.calmwolfs.valorantmodelapi.models.Weapon
 import com.calmwolfs.valorantmodelapi.utils.GsonUtils
 import com.google.gson.JsonObject
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
+import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.request.header
 import io.ktor.client.request.request
 import io.ktor.client.statement.bodyAsText
@@ -55,7 +55,7 @@ object ValorantModelApi {
     private const val PROJECT_VERSION = "1.2.3"
     private const val BASE_URL = "https://valorant-api.com/v1"
 
-    private val client = HttpClient(CIO)
+    private val client = HttpClient(OkHttp)
 
     private val requestCache = mutableMapOf<String, Any>()
 
