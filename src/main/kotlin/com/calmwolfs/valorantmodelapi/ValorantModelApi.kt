@@ -52,7 +52,7 @@ import kotlin.collections.set
 
 object ValorantModelApi {
 
-    private const val PROJECT_VERSION = "1.2.3"
+    private const val PROJECT_VERSION = "1.2.4"
     private const val BASE_URL = "https://valorant-api.com/v1"
 
     private val client = HttpClient(OkHttp)
